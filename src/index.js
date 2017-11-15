@@ -1,7 +1,12 @@
-//const sum = require('./sum');  import a module with commonJS
-import sum from './sum.js'; // import a module with ES2015
-import './image_viewer'; //se agarra asi porque el codigo dentro del archivo hace todo al ser ejecutado
+window.onload = function(){
+	const button = document.createElement('button');
 
+	button.innerText = 'Click me';
+	button.onclick = () => {
+		System.import('./image_viewer').then(module => {
+			module.default();
+		})
+	};
 
-const total = sum (10, 5);
-console.log(total);
+	document.body.appendChild(button);
+};
